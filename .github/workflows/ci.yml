@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - production
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: echo "Install dependencies here"
+
+      - name: Run lint
+        run: echo "Run lint here"
+
+      - name: Run tests
+        run: echo "Run tests here"
+
+      - name: Build
+        run: echo "Build application here"

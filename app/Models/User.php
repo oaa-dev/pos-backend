@@ -44,7 +44,7 @@ class User extends Authenticatable
             'status' => AccountStatusEnum::class,
         ];
     }
-    
+
     /**
      * @return HasOne<UserProfile, $this>
      */

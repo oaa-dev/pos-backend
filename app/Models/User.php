@@ -45,11 +45,17 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * @return HasOne<UserProfile, $this>
+     */
     public function profile(): HasOne
     {
         return $this->hasOne(UserProfile::class);
     }
 
+    /**
+     * @return BelongsTo<Role, $this>
+     */
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
@@ -76,12 +82,7 @@ class User extends Authenticatable
     /**
      * The store this account belongs to.
      *
-     * `users` has no `store_id`; `store_users` is the whole record of it. A
-     * user with no pivot row resolves to null and `StoreService::currentFor()`
-     * turns that into a 404 rather than leaking another store's row.
-     *
-     * Singular because a person works at one sari-sari. `stores()` is the
-     * honest shape of the table and stays available for the operator case.
+     * @return HasOneThrough<Store, StoreUser, $this>
      */
     public function store(): HasOneThrough
     {
